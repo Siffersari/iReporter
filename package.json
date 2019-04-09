@@ -1,0 +1,36 @@
+{
+  "name": "ireporter",
+  "version": "1.0.0",
+  "description": "iReporter enables any/every citizen to bring any form of corruption to the notice of appropriate authorities and the general public",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --open --mode development --watch ./src/index.js --output ./static/main.js",
+    "build": "webpack --mode production --watch ./src/index.js --output ./static/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Siffersari/iReporter.git"
+  },
+  "author": "Leewel K Mwangi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Siffersari/iReporter/issues"
+  },
+  "homepage": "https://github.com/Siffersari/iReporter#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.3.0"
+  }
+}
