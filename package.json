@@ -4,7 +4,7 @@
   "description": "iReporter enables any/every citizen to bring any form of corruption to the notice of appropriate authorities and the general public",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --mode development --watch ./src/index.js --output ./static/main.js",
+    "start": "webpack-dev-server --open --watch --mode development  ./src/index.js --output ./static/main.js",
     "build": "webpack --mode production --watch ./src/index.js --output ./static/main.js"
   },
   "repository": {
@@ -19,8 +19,13 @@
   "homepage": "https://github.com/Siffersari/iReporter#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-alert": "^5.4.0",
+    "react-alert-template-basic": "^1.0.0",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
+    "react-transition-group": "^2.9.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
