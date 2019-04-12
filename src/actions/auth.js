@@ -42,6 +42,32 @@ export const register = (user, currentProps) => {
     });
 };
 
+export const login = (credentials, currentProps, state) => {
+  const { alert } = currentProps;
+
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+
+  let body = JSON.stringify(credentials);
+  axios
+    .post(
+      "https://ireporter-drf-api-staging.herokuapp.com/api/auth/login/",
+      body,
+      config
+    )
+    .then(res => {
+      localStorage.setItem("token", res.data.token);
+
+      currentProps.history.push("/");
+    })
+    .catch(err => {
+      if (err.response.data.message) alert.error(err.response.data.message);
+    });
+};
+
 export const activate = (body, config, currentProps) => {
   const { alert } = currentProps;
   axios
