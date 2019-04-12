@@ -4,6 +4,7 @@ import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 import Register from "./auth/Register";
+import Login from "./auth/Login";
 import Header from "./layout/Header";
 
 const alertOptions = {
@@ -21,6 +22,7 @@ export class App extends Component {
             <div className="container">
               <Switch>
                 <Route exact path="/register" component={Register} />
+                <Route exact path="/login" component={Login} />
               </Switch>
             </div>
           </Fragment>
