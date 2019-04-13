@@ -61,7 +61,7 @@ export const login = (credentials, currentProps, state) => {
     .then(res => {
       localStorage.setItem("token", res.data.token);
 
-      currentProps.history.push("/");
+      currentProps.history.push("/redflags");
     })
     .catch(err => {
       if (err.response.data.message) alert.error(err.response.data.message);
@@ -82,4 +82,20 @@ export const activate = (body, config, currentProps) => {
     .catch(err => {
       alert.error("Sorry, your account might not be active. Try again later");
     });
+};
+
+export const getTokenConfig = () => {
+  const token = localStorage.getItem("token");
+
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+
+  if (token) {
+    config.headers["Authorization"] = `Bearer ${token}`;
+  }
+
+  return config;
 };
