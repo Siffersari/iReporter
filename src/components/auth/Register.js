@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAlert } from "react-alert";
 import { register } from "../../actions/auth";
+import { checkIsAuthenticated } from "../../actions/auth";
 
 export class Register extends Component {
   state = {
@@ -64,6 +65,12 @@ export class Register extends Component {
       password,
       password2
     } = this.state;
+
+    if (localStorage.getItem("token")) {
+      const token = localStorage.getItem("token");
+
+      checkIsAuthenticated(this.props);
+    }
 
     return (
       <div className="col-md-6 m-auto">

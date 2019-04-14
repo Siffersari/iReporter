@@ -51,6 +51,35 @@ export class Redflag extends Component {
       });
   }
 
+  deleteFlag(id) {
+    const { alert } = this.props;
+    const config = getTokenConfig();
+    axios
+      .delete(
+        `https://ireporter-drf-api-staging.herokuapp.com/api/redflags/${id}/`,
+        config
+      )
+      .then(res => {
+        alert.success("Redflag Deleted Successfully");
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      })
+      .catch(err => {
+        this.setState({
+          isError: true
+        });
+        if (err.response.data.detail) {
+          if (err.response.data.detail.includes("signature")) {
+            alert.error("Please login in to continue");
+            this.props.history.push("/login");
+          }
+        } else if (err.response.data.error) {
+          alert.error(err.response.data.error);
+        }
+      });
+  }
+
   componentDidMount() {
     this.getFlags(
       "https://ireporter-drf-api-staging.herokuapp.com/api/redflags/"
@@ -120,6 +149,16 @@ export class Redflag extends Component {
                     Status: <p className="badge ">{redflag.status}</p>
                   </span>{" "}
                   <p className="card-text">{redflag.comment}</p>
+                  <div className="form-group mt-4">
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => {
+                        this.deleteFlag(redflag.id);
+                      }}
+                    >
+                      Delete Record
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}

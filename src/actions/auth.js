@@ -116,3 +116,16 @@ export const checkToken = props => {
       }
     });
 };
+
+export const checkIsAuthenticated = props => {
+  const config = getTokenConfig();
+  axios
+    .get(
+      "https://ireporter-drf-api-staging.herokuapp.com/api/redflags/",
+      config
+    )
+    .then(res => {
+      props.history.push("/redflags");
+    })
+    .catch(err => {});
+};
