@@ -33,6 +33,16 @@ export class Header extends Component {
                 Login
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to="/redflags" className="nav-link">
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/postflag" className="nav-link">
+                Create Redflag
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>
