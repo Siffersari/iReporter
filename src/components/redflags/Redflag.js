@@ -61,9 +61,15 @@ export class Redflag extends Component {
     if (this.state.isLoaded) {
       const { flags } = this.state;
 
+      const path = window.location.href.split("#")[0];
+
       const topMargin = {
         marginTop: "1.5em",
         marginBottom: "1.5em"
+      };
+
+      const noDecoration = {
+        textDecoration: "none"
       };
 
       return (
@@ -88,7 +94,12 @@ export class Redflag extends Component {
                 <div className="card-body">
                   <h3 className="card-title">
                     {" "}
-                    <strong>{redflag.title}</strong>
+                    <a
+                      href={"" + path + `#/flag/?fid=${redflag.id}`}
+                      style={noDecoration}
+                    >
+                      <strong>{redflag.title}</strong>
+                    </a>
                   </h3>
                   <span>
                     {" "}
