@@ -84,12 +84,12 @@ export const activate = (body, config, currentProps) => {
     });
 };
 
-export const getTokenConfig = () => {
+export const getTokenConfig = (contentType = "application/json") => {
   const token = localStorage.getItem("token");
 
   const config = {
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": contentType
     }
   };
 
@@ -98,4 +98,21 @@ export const getTokenConfig = () => {
   }
 
   return config;
+};
+
+export const checkToken = props => {
+  const config = getTokenConfig();
+  axios
+    .get(
+      "https://ireporter-drf-api-staging.herokuapp.com/api/redflags/",
+      config
+    )
+    .then(res => {})
+    .catch(err => {
+      if (err.response.data.detail) {
+        if (err.response.data.detail.includes("signature")) {
+          props.history.push("/login");
+        }
+      }
+    });
 };
