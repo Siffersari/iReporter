@@ -6,6 +6,7 @@ import AlertTemplate from "react-alert-template-basic";
 import Register from "./auth/Register";
 import Login from "./auth/Login";
 import Redflag from "./redflags/Redflag";
+import Flag from "./redflags/Flag";
 import Header from "./layout/Header";
 
 const alertOptions = {
@@ -25,6 +26,7 @@ export class App extends Component {
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/redflags" component={Redflag} />
+                <Route exact path="/flag" component={Flag} />
               </Switch>
             </div>
           </Fragment>
