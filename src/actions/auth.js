@@ -110,7 +110,10 @@ export const checkToken = props => {
     .then(res => {})
     .catch(err => {
       if (err.response.data.detail) {
-        if (err.response.data.detail.includes("signature")) {
+        if (
+          err.response.data.detail.includes("signature") ||
+          err.response.data.detail.includes("expired")
+        ) {
           props.history.push("/login");
         }
       }

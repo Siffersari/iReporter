@@ -44,7 +44,10 @@ export class Redflag extends Component {
         this.setState({
           isError: true
         });
-        if (err.response.data.detail.includes("signature")) {
+        if (
+          err.response.data.detail.includes("signature") ||
+          err.response.data.detail.includes("expired")
+        ) {
           alert.error("Please login in to continue");
           this.props.history.push("/login");
         }
@@ -69,6 +72,7 @@ export class Redflag extends Component {
         this.setState({
           isError: true
         });
+
         if (err.response.data.detail) {
           if (err.response.data.detail.includes("signature")) {
             alert.error("Please login in to continue");
@@ -98,6 +102,11 @@ export class Redflag extends Component {
       };
 
       const noDecoration = {
+        textDecoration: "none"
+      };
+
+      const buttonLink = {
+        color: "white",
         textDecoration: "none"
       };
 
@@ -149,9 +158,18 @@ export class Redflag extends Component {
                     Status: <p className="badge ">{redflag.status}</p>
                   </span>{" "}
                   <p className="card-text">{redflag.comment}</p>
-                  <div className="form-group mt-4">
+                  <div className="btn-group mt-4">
+                    <button className="btn btn-primary ">
+                      <a
+                        href={"" + path + `#/updateflag/?fid=${redflag.id}`}
+                        style={buttonLink}
+                      >
+                        {" "}
+                        Update Record
+                      </a>
+                    </button>
                     <button
-                      className="btn btn-danger"
+                      className="btn btn-danger ml-4"
                       onClick={() => {
                         this.deleteFlag(redflag.id);
                       }}

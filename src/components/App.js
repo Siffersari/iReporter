@@ -8,6 +8,7 @@ import Login from "./auth/Login";
 import Redflag from "./redflags/Redflag";
 import Flag from "./redflags/Flag";
 import Post from "./redflags/Post";
+import Update from "./redflags/Update";
 import Header from "./layout/Header";
 
 const alertOptions = {
@@ -29,6 +30,7 @@ export class App extends Component {
                 <Route exact path="/redflags" component={Redflag} />
                 <Route exact path="/flag" component={Flag} />
                 <Route exact path="/postflag" component={Post} />
+                <Route exact path="/updateflag" component={Update} />
               </Switch>
             </div>
           </Fragment>
