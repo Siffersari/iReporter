@@ -67,7 +67,11 @@ export class Flag extends Component {
       return (
         <Fragment>
           <div className="container-fluid col-9">
-            <div className="card rounded" style={topMargin} key={redflag.id}>
+            <div
+              className="card rounded shadow-lg p-3 mb-5 bg-white rounded"
+              style={topMargin}
+              key={redflag.id}
+            >
               <object
                 data="https://picsum.photos/200/300/?random"
                 type="image/png"
@@ -106,6 +110,20 @@ export class Flag extends Component {
                   Status: <p className="badge ">{redflag.status}</p>
                 </span>{" "}
                 <p className="card-text">{redflag.comment}</p>
+              </div>
+              <div className="btn-group ml-4 mt-4 mb-4">
+                <a href={redflag.facebook}>
+                  <i className="fab fa-facebook fa-2x" />
+                </a>
+                <a href={redflag.twitter}>
+                  <i className="fab fa-twitter fa-2x ml-4" />
+                </a>
+                <a href={redflag.linkedIn}>
+                  <i className="fab fa-linkedin fa-2x ml-4" />
+                </a>
+                <a href={redflag.mail}>
+                  <i className="fas fa-envelope-open fa-2x ml-4" />
+                </a>
               </div>
             </div>
           </div>
