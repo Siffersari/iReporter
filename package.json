@@ -4,8 +4,10 @@
   "description": "iReporter enables any/every citizen to bring any form of corruption to the notice of appropriate authorities and the general public",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --watch --mode development  ./src/index.js --output ./static/main.js",
-    "build": "webpack --mode production --watch ./src/index.js --output ./static/main.js"
+    "dev": "webpack-dev-server --open --watch --mode development  ./src/index.js --output ./static/main.js",
+    "start": "serve -s build",
+    "build": "react-scripts build",
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -26,7 +28,8 @@
     "react-alert-template-basic": "^1.0.0",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
-    "react-transition-group": "^2.9.0"
+    "react-transition-group": "^2.9.0",
+    "serve": "^11.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
