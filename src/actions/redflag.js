@@ -26,9 +26,12 @@ export const postFlag = (flag, currentProps) => {
       if (err.response.data.location)
         alert.error(`Location: ${err.response.data.location.join()}`);
       if (err.response.data.detail) {
-        if (err.response.data.detail.includes("signature")) {
+        if (
+          err.response.data.detail.includes("signature") ||
+          err.response.data.detail.includes("expired")
+        ) {
           alert.error("Please login in to continue");
-          this.props.history.push("/login");
+          currentProps.history.push("/login");
         }
       } else if (err.response.data.error) {
         alert.error(err.response.data.error);

@@ -43,7 +43,7 @@ export const register = (user, currentProps) => {
     });
 };
 
-export const login = (credentials, currentProps, state) => {
+export const login = (credentials, currentProps) => {
   const { alert } = currentProps;
 
   const config = {
@@ -63,6 +63,10 @@ export const login = (credentials, currentProps, state) => {
       localStorage.setItem("token", res.data.token);
 
       currentProps.history.push("/redflags");
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
     })
     .catch(err => {
       if (err.response.data.message) alert.error(err.response.data.message);
@@ -104,8 +108,8 @@ export const getTokenConfig = (contentType = "application/json") => {
 export const checkToken = props => {
   const config = getTokenConfig();
   const token = localStorage.getItem("token");
-  if (!jwt.decode(token)) {
-    return true;
+  if (jwt.decode(token)) {
+    return false;
   } else {
     axios
       .get(
@@ -125,6 +129,7 @@ export const checkToken = props => {
         }
       });
   }
+  return true;
 };
 
 export const checkIsAuthenticated = props => {
