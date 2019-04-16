@@ -4,8 +4,8 @@
   "description": "iReporter enables any/every citizen to bring any form of corruption to the notice of appropriate authorities and the general public",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --open --watch --mode development  ./src/index.js --output ./static/main.js",
-    "start": "react-scripts start",
+    "dev": "webpack-dev-server --open --watch --mode development  ./src/index.js --output ./dist/main.js",
+    "start": "node server.js",
     "build": "webpack -p",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
