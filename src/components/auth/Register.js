@@ -67,8 +67,6 @@ export class Register extends Component {
     } = this.state;
 
     if (localStorage.getItem("token")) {
-      const token = localStorage.getItem("token");
-
       checkIsAuthenticated(this.props);
     }
 

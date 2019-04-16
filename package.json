@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Siffersari/iReporter#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "jsonwebtoken": "^8.5.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-alert": "^5.4.0",
