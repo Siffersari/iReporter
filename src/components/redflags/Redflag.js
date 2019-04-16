@@ -50,6 +50,8 @@ export class Redflag extends Component {
         ) {
           alert.error("Please login in to continue");
           this.props.history.push("/login");
+        } else {
+          this.props.history.push("/login");
         }
       });
   }
