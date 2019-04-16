@@ -1,4 +1,5 @@
 import axios from "axios";
+import jwt from "jsonwebtoken";
 
 export const register = (user, currentProps) => {
   const { alert } = currentProps;
@@ -102,33 +103,45 @@ export const getTokenConfig = (contentType = "application/json") => {
 
 export const checkToken = props => {
   const config = getTokenConfig();
-  axios
-    .get(
-      "https://ireporter-drf-api-staging.herokuapp.com/api/redflags/",
-      config
-    )
-    .then(res => {})
-    .catch(err => {
-      if (err.response.data.detail) {
-        if (
-          err.response.data.detail.includes("signature") ||
-          err.response.data.detail.includes("expired")
-        ) {
-          props.history.push("/login");
+  const token = localStorage.getItem("token");
+  if (!jwt.decode(token)) {
+    return true;
+  } else {
+    axios
+      .get(
+        "https://ireporter-drf-api-staging.herokuapp.com/api/redflags/",
+        config
+      )
+      .then(res => {})
+      .catch(err => {
+        if (err.response.data.detail) {
+          if (
+            err.response.data.detail.includes("signature") ||
+            err.response.data.detail.includes("expired")
+          ) {
+            props.history.push("/login");
+            return true;
+          }
         }
-      }
-    });
+      });
+  }
 };
 
 export const checkIsAuthenticated = props => {
   const config = getTokenConfig();
-  axios
-    .get(
-      "https://ireporter-drf-api-staging.herokuapp.com/api/redflags/",
-      config
-    )
-    .then(res => {
-      props.history.push("/redflags");
-    })
-    .catch(err => {});
+  const token = localStorage.getItem("token");
+
+  if (jwt.decode(token)) {
+    props.history.push("/redflags");
+  } else {
+    axios
+      .get(
+        "https://ireporter-drf-api-staging.herokuapp.com/api/redflags/",
+        config
+      )
+      .then(res => {
+        props.history.push("/redflags");
+      })
+      .catch(err => {});
+  }
 };
